@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blogger515</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class=”nav”>
+	<%= link_to image_tag("boulders.jpg", size: "200x150"), welcome_about_path %>
+
+ 	<%= link_to 'BlogPosts', blog_posts_path %>
+  <%= link_to 'Comments', blog_comments_path %>
+
+</div>
+<%= yield %>
+
+</body>
+</html>
