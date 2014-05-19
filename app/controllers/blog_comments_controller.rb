@@ -1,6 +1,8 @@
 class BlogCommentsController < ApplicationController
   before_action :set_blog_comment, only: [:show, :edit, :update, :destroy]
 
+  include BlogPostHelper
+
   # GET /blog_comments
   # GET /blog_comments.json
   def index
@@ -28,6 +30,10 @@ class BlogCommentsController < ApplicationController
 
     respond_to do |format|
       if @blog_comment.save
+
+        #update number of comments
+        update_num_comments @blog_comment.blogpost_id
+
         format.html { redirect_to @blog_comment, notice: 'Blog comment was successfully created.' }
         format.json { render :show, status: :created, location: @blog_comment }
       else
@@ -41,7 +47,17 @@ class BlogCommentsController < ApplicationController
   # PATCH/PUT /blog_comments/1.json
   def update
     respond_to do |format|
+
+      old_blog_post_id = @blog_comment.blogpost_id
+
       if @blog_comment.update(blog_comment_params)
+
+        #remove from old
+        update_num_comments old_blog_post_id
+
+        #add to new
+        update_num_comments @blog_comment.blogpost_id
+
         format.html { redirect_to @blog_comment, notice: 'Blog comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @blog_comment }
       else
@@ -54,6 +70,13 @@ class BlogCommentsController < ApplicationController
   # DELETE /blog_comments/1
   # DELETE /blog_comments/1.json
   def destroy
+
+    blogpost_id = @blog_comment.blogpost_id
+
+    @blog_comment.destroy
+
+    update_num_comments blogpost_id
+
     @blog_comment.destroy
     respond_to do |format|
       format.html { redirect_to blog_comments_url, notice: 'Blog comment was successfully destroyed.' }

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get "blog/blog_posts" => "blog#blog_posts"
 
-  get "blog/blog_comments" => "blog#blog_comments"
+  get "blog_comments/blog_post_id" => "blog_comments"
 
   resources :blog_comments
 
