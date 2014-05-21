@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get "welcome/about" => "welcome#about"
 
-  get "blog/blog_posts" => "blog#blog_posts"
-
-  get "blog_comments/blog_post_id" => "blog_comments"
+  get "blog_comments/blogposthelper"
 
   resources :blog_comments
 

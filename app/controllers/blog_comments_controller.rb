@@ -1,7 +1,7 @@
 class BlogCommentsController < ApplicationController
   before_action :set_blog_comment, only: [:show, :edit, :update, :destroy]
 
-  include BlogPostHelper
+ # include BlogPostHelper
 
   # GET /blog_comments
   # GET /blog_comments.json
@@ -17,6 +17,7 @@ class BlogCommentsController < ApplicationController
   # GET /blog_comments/new
   def new
     @blog_comment = BlogComment.new
+    @blog_post = :params[:blog_post_id]
   end
 
   # GET /blog_comments/1/edit
@@ -34,7 +35,7 @@ class BlogCommentsController < ApplicationController
         #update number of comments
         update_num_comments @blog_comment.blogpost_id
 
-        format.html { redirect_to @blog_comment, notice: 'Blog comment was successfully created.' }
+        format.html { redirect_to @blog_comment.blog_post, notice: 'Blog comment was successfully created.' }
         format.json { render :show, status: :created, location: @blog_comment }
       else
         format.html { render :new }
@@ -92,6 +93,6 @@ class BlogCommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_comment_params
-      params.require(:blog_comment).permit(:comment)
+      params.require(:blog_comment).permit(:comment, :blog_post_id)
     end
 end

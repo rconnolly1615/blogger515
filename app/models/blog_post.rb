@@ -1,6 +1,6 @@
 class BlogPost < ActiveRecord::Base
 
 	belongs_to :blog
-	has_many :comments
+	has_many :blog_comments
 
 end
