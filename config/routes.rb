@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
+  
+  get "welcome/about"
 
   devise_for :users
-  get "welcome/about" => "welcome#about"
-
-  get "blog_comments/blogposthelper"
 
   resources :blog_comments
 
