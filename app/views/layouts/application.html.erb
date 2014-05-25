@@ -6,16 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-
 <div class=”nav”>
-	 <%= link_to image_tag"boulders.jpg", size: "200x150" %>
-
+	 <a href="/welcome/about/"> 
+	 	<%= image_tag"boulders.jpg", size: "200x150" %></a>
  	<%= link_to 'Blogs', blogs_path %>
  	<%= link_to 'BlogPosts', blog_posts_path %>
   	<%= link_to 'Comments', blog_comments_path %>
-
 </div>
+
 <%= yield %>
 
 </body>

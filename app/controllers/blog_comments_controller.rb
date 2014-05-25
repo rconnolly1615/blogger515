@@ -17,7 +17,7 @@ class BlogCommentsController < ApplicationController
   # GET /blog_comments/new
   def new
     @blog_comment = BlogComment.new
-    @blog_post = :params[:blog_post_id]
+    @blog_post = params[:blog_post_id]
   end
 
   # GET /blog_comments/1/edit

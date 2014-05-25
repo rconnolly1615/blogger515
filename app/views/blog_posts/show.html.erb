@@ -49,18 +49,24 @@ Sorr, no comments you guys
 <%end%>
 
 This is the form?
->%- form_for[@blog_comment) do |f| %>
-<% if @blog_comment.errors.any? %>
-<div id="error_explanation">
-	<h2><%- pluraralize(@blog_comment.errors.count, "error"> %> prohibiited thes blog_comment from being saved:</h2>
+<%= form_for[@blog_comment] do |f| %>
 
-	<ul>
-		<% @blog_comment.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
+  <%= if @blog_comment.errors.any? %>
+
+  <div id="error_explanation">
+	
+  <h2><%= pluralize(@blog_comment.errors.count, "error" %> prohibiited this blog_comment from being saved:</h2>
+
+	 <ul>
+
+		<%= @blog_comment.errors.full_messages.each do |message| %>
+		  <li><%= message %></li>
 		<% end %>
-		</ul>
-	</div>
-	<% end %>
+
+		</ul>	
+  </div>
+
+<% end %>
 
 	 <div class="field">
     <%= f.label :comment %><br>

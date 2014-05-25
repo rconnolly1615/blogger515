@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   
+  root "welcome#home"
+
   get "welcome/about"
+
+  get "welcome/home"
+
+  get "welcome/ajax2"
+
+  get "welcome/ajax3"
 
   devise_for :users
 
