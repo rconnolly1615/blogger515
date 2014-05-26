@@ -2,18 +2,26 @@
 <html>
 <head>
   <title>Blogger515</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  
   <%= csrf_meta_tags %>
 </head>
-
 <body>
-<div class=”nav”>
-	 <a href="/welcome/about/"> 
-	 	<%= image_tag"boulders.jpg", size: "200x150" %></a>
- 	<%= link_to 'Blogs', blogs_path %>
- 	<%= link_to 'BlogPosts', blog_posts_path %>
-  	<%= link_to 'Comments', blog_comments_path %>
+
+<div class=”navbar navbar-default”>
+	<div class="containter">
+		<div class="navbar=header">
+			<a class="navbar-brand" href="/welcome/home/"> 
+	 	<%= image_tag"boulders.jpg", size: "100x75" %></a>
+	 	</div>
+	 	<ul class="nav nav-pills">
+	 		<li class="active"><a href="/welcome/about/">About</a></li>
+	 		<li class="active"><a href="/blogs/">Blogs</a></li>
+ 	 		<li class="active"><a href="/blog_posts/">Blog Posts</a></li>
+	 		<li class="active"><a href="/blog_comments/">Blog Comments</a></li>
+  		</ul>
+  	</div>
 </div>
 
 <%= yield %>

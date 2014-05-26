@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get "welcome/ajax3"
 
+  get "blogs/index"
+
   devise_for :users
 
   resources :blog_comments

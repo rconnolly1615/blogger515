@@ -3,6 +3,8 @@ class BlogPostsController < ApplicationController
 
   before_filter :authenticate_user!
 
+  include BlogPostsHelper
+
   # GET /blog_posts
   # GET /blog_posts.json
   def index
@@ -12,6 +14,9 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts/1
   # GET /blog_posts/1.json
   def show
+  end
+
+  def comment
   end
 
   # GET /blog_posts/new

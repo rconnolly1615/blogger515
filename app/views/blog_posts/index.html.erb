@@ -1,6 +1,6 @@
-<h1>Listing blog_posts</h1>
+<br /><h1 align="center">Blog Posts</h1>
 
-<table border>
+<table border align="center">
   <thead>
     <tr>
       <th>Subject</th>
@@ -16,8 +16,8 @@
       <tr>
         <td><%= blog_post.subject %></td>
         <td><%= blog_post.text %></td>
-        <td><%= blog_post.num_comments %></td>
-        <td><%= blog_post.blog_id %></td>
+        <td align="center"><%= blog_post.num_comments %></td>
+        <td align="center"><%= blog_post.blog_id %></td>
         <td><%= link_to 'Show', blog_post %></td>
         <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
         <td><%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

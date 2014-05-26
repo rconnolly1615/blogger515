@@ -1,10 +1,10 @@
 module BlogPostsHelper
 
-	def update_num_comments(blogpost_id)
+	def update_num_comments(blog_post_id)
 
-		blog_post = BlogPost.find(blogpost_id)
+		blog_post = BlogPost.find(blog_post_id)
 
-		num_comments = blogpost_id.comments.count
+		num_comments = blog_post_id.comments.count
 
 		blog_post.num_comments = num_comments
 

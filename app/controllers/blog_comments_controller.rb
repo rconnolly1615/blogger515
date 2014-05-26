@@ -1,7 +1,7 @@
 class BlogCommentsController < ApplicationController
   before_action :set_blog_comment, only: [:show, :edit, :update, :destroy]
 
- # include BlogPostHelper
+ include BlogPostsHelper
 
   # GET /blog_comments
   # GET /blog_comments.json
@@ -12,6 +12,9 @@ class BlogCommentsController < ApplicationController
   # GET /blog_comments/1
   # GET /blog_comments/1.json
   def show
+  end
+
+  def comment
   end
 
   # GET /blog_comments/new
@@ -49,7 +52,7 @@ class BlogCommentsController < ApplicationController
   def update
     respond_to do |format|
 
-      old_blog_post_id = @blog_comment.blogpost_id
+      old_blog_post_id = @blog_comment.blog_post_id
 
       if @blog_comment.update(blog_comment_params)
 
@@ -57,7 +60,7 @@ class BlogCommentsController < ApplicationController
         update_num_comments old_blog_post_id
 
         #add to new
-        update_num_comments @blog_comment.blogpost_id
+        update_num_comments @blog_comment.blog_post_id
 
         format.html { redirect_to @blog_comment, notice: 'Blog comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @blog_comment }
@@ -72,11 +75,11 @@ class BlogCommentsController < ApplicationController
   # DELETE /blog_comments/1.json
   def destroy
 
-    blogpost_id = @blog_comment.blogpost_id
+    blog_post_id = @blog_comment.blog_post_id
 
     @blog_comment.destroy
 
-    update_num_comments blogpost_id
+    update_num_comments blog_post_id
 
     @blog_comment.destroy
     respond_to do |format|

@@ -16,18 +16,18 @@
 </p>
 
 <% if @blog_post.num_comments == 0 || @blog_post.num_comments == nil %>
-Sorr, no comments you guys
-<br><br>s
+Sorry, no comments you guys.
+<br><br><% end %>
 
 <p>
   <strong>Blog:</strong>
   <%= @blog_post.blog_id %>
 </p>
 
-<%= @blog_post.blog_comments.each do |blog_comment| %>
+<%= @blog_post.blog_comments.each do |blog_comment| %><% end %>
 
 <table border>
-  <thead>
+  <thead align="center">
     <tr>
       <th>Comment</th>
       <th colspan="3"></th>
@@ -42,34 +42,23 @@ Sorr, no comments you guys
         <td><%= link_to 'Edit', edit_blog_comment_path(blog_comment) %></td>
         <td><%= link_to 'Destroy', blog_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
+    </tbody>
+  <% end %>
 </table>
 
 <%end%>
 
-This is the form?
-<%= form_for[@blog_comment] do |f| %>
-
-  <%= if @blog_comment.errors.any? %>
-
-  <div id="error_explanation">
+ <div id="error_explanation">
 	
-  <h2><%= pluralize(@blog_comment.errors.count, "error" %> prohibiited this blog_comment from being saved:</h2>
+    <h2><%= "error" %> prohibiited this @blog_comment from being saved.</h2>
 
-	 <ul>
+		  <%= @blog_comment.errors.full_messages.each do |message| %>
+		    <li><%= message %></li>
+      <% end %>
+</div>
 
-		<%= @blog_comment.errors.full_messages.each do |message| %>
-		  <li><%= message %></li>
-		<% end %>
-
-		</ul>	
-  </div>
-
-<% end %>
-
-	 <div class="field">
-    <%= f.label :comment %><br>
+	<div class="field">
+    <%= f.label :comment %>
     <%= f.text_area :comment %>
     <%= f.hidden_field :blog_post_id, :value => @blog_post_id %>
   </div>
@@ -78,5 +67,5 @@ This is the form?
     <%= f.submit %>
   </div>
 
-<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+<%= link_to 'Edit', edit_blog_post_path %>
 <%= link_to 'Back', blog_posts_path %>

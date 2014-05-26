@@ -1,12 +1,12 @@
-Home Page With User Sign In, Etc.
+<br /><br />
 
-<h1>IN CLASS PROJECT</h1>
+<h1>Blog Website Login</h1>
 
 <% if user_signed_in? %>
 
 You are logged in as <%= current_user.email %>.<br />
 
-The last blog is: <%= Blog.all.last.body %><br />
+The last blog post was: <%= BlogPost.all.last.text %><br />
 
 <%= link_to "Sign out",destroy_user_session_path, method: :delete, class: "button" %>
 <% end %><br />
@@ -16,9 +16,6 @@ The last blog is: <%= Blog.all.last.body %><br />
 <h2>Sign In:</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-<div><%= f.label :name %><br />
-  <%= f.text_field :name, autofocus: true %></div>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
