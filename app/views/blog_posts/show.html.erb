@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<br /><p id="notice"><%= notice %></p>
 
 <p>
   <strong>Subject:</strong>
@@ -11,23 +11,24 @@
 </p>
 
 <p>
-  <strong>Num comments:</strong>
+  <strong>Num Comments:</strong>
   <%= @blog_post.num_comments %>
 </p>
 
 <% if @blog_post.num_comments == 0 || @blog_post.num_comments == nil %>
 Sorry, no comments you guys.
-<br><br><% end %>
+<% end %>
 
 <p>
   <strong>Blog:</strong>
   <%= @blog_post.blog_id %>
 </p>
 
-<%= @blog_post.blog_comments.each do |blog_comment| %><% end %>
+<%= @blog_post.blog_comment.each do |blog_comment| %>
+Here are the comments:
 
-<table border>
-  <thead align="center">
+<table border align="center">
+  <thead>
     <tr>
       <th>Comment</th>
       <th colspan="3"></th>
@@ -42,8 +43,8 @@ Sorry, no comments you guys.
         <td><%= link_to 'Edit', edit_blog_comment_path(blog_comment) %></td>
         <td><%= link_to 'Destroy', blog_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </tbody>
-  <% end %>
+   <% end %>
+  </tbody>
 </table>
 
 <%end%>

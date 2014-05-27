@@ -17,6 +17,9 @@ class BlogCommentsController < ApplicationController
   def comment
   end
 
+  def blog_post_id
+  end
+
   # GET /blog_comments/new
   def new
     @blog_comment = BlogComment.new
@@ -31,6 +34,8 @@ class BlogCommentsController < ApplicationController
   # POST /blog_comments.json
   def create
     @blog_comment = BlogComment.new(blog_comment_params)
+
+    @blog_comment.blog_post_id = blog_comment.blog_post_id
 
     respond_to do |format|
       if @blog_comment.save
@@ -52,15 +57,15 @@ class BlogCommentsController < ApplicationController
   def update
     respond_to do |format|
 
-      old_blog_post_id = @blog_comment.blog_post_id
+      #old_blog_post_id = @blog_comment.blog_post_id
 
       if @blog_comment.update(blog_comment_params)
 
         #remove from old
-        update_num_comments old_blog_post_id
+        #update_num_comments old_blog_post_id
 
         #add to new
-        update_num_comments @blog_comment.blog_post_id
+        #update_num_comments @blog_comment.blog_post_id
 
         format.html { redirect_to @blog_comment, notice: 'Blog comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @blog_comment }
