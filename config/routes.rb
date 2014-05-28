@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get "blogs/index"
 
+  get "blog_posts/index"
+
   devise_for :users
 
   resources :blog_comments

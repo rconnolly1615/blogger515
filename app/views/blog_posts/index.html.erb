@@ -12,15 +12,15 @@
   </thead>
 
   <tbody>
-    <% @blog_posts.each do |posts| %>
+    <% @blog_posts.each do |post| %>
       <tr>
-        <td><%= blog_post.subject %></td>
-        <td><%= blog_post.text %></td>
-        <td align="center"><%= blog_post.num_comments %></td>
-        <td align="center"><%= blog_post.blog_id %></td>
-        <td><%= link_to 'Show', blog_post %></td>
-        <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
-        <td><%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= post.subject %></td>
+        <td><%= post.text %></td>
+        <td align="center"><%= post.num_comments %></td>
+        <td align="center"><%= post.blog_id %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_blog_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
